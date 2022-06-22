@@ -52,6 +52,7 @@ function onGetUserPos() {
             console.log('err!!!', err);
         })
 }
+
 // Move to location
 function onPanTo(location) {
     console.log('Panning the Map');
