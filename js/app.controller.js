@@ -6,6 +6,7 @@ window.onAddMarker = onAddMarker;
 window.onPanTo = onPanTo;
 window.onGetLocs = onGetLocs;
 window.onGetUserPos = onGetUserPos;
+window.initMap = initMap;
 
 function onInit() {
     mapService.initMap()
@@ -23,7 +24,7 @@ function getPosition() {
     })
 }
 
-function onAddMarker() {
+function onAddMarker(location) {
     console.log('Adding a marker');
     mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 });
 }
@@ -36,18 +37,23 @@ function onGetLocs() {
         })
 }
 
+//Get user current location and render the map
 function onGetUserPos() {
+    //Get  user location lat,lng
     getPosition()
         .then(pos => {
-            console.log('User position is:', pos.coords);
-            document.querySelector('.user-pos').innerText =
-                `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
+            console.log('User position is:', pos.coords)
+            var { latitude, longitude } = pos.coords
+            onPanTo({ latitude, longitude })
+            // document.querySelector('.user-pos').innerText =
+            //     `Latitude: ${pos.coords.latitude} - Longitude: ${pos.coords.longitude}`
         })
         .catch(err => {
             console.log('err!!!', err);
         })
 }
-function onPanTo() {
+// Move to location
+function onPanTo(location) {
     console.log('Panning the Map');
-    mapService.panTo(35.6895, 139.6917);
+    mapService.panTo(location.latitude, location.longitude);
 }
