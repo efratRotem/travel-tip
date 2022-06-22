@@ -14,14 +14,27 @@
         <div class="search-container">
             <form onsubmit="onSubmit()">
                 <input type="text" placeholder="Enter Location.." name="search" value="">
-                <button type="submit"><i class="fa fa-search"></i></button>
+                <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
             </form>
         </div>
     </header>
     <main class="main-container">
-        <section class="loc"></section>
-        <section></section>
-        <section></section>
+        <section class="location-container">
+            <div class="location">
+                <h3> Location: Central Park, New York</h3>
+                <button class="btn btn-copy-location">Copy Location</button>
+                <button class="btn btn-my-location">My Location</button>
+
+            </div>
+        </section>
+        <div class="location-details-continer flex">
+            <div class="location-details">
+                <div class="weahter"></div>
+                <div class="locations-list"></div>
+            </div>
+            <div class="map-container"></div>
+        </div>
+        
     </main>
     <!-- <button type="submit" class="btn btn-location">My Location</button> -->
     <!-- <h1>TravelTip Starter</h1>
